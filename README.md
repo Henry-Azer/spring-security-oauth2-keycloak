@@ -9,7 +9,8 @@ Sample implementation code of spring security oauth2 keycloak technology.
     {  
         "user" : "admin",  
         "password" : "admin"  
-    }, 
+    },
+    
     {  
         "user" : "user",  
         "password" : "user"  
