@@ -9,18 +9,14 @@ import javax.persistence.*;
 @Setter
 @ToString
 @NoArgsConstructor
-@Table(schema = "employee")
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "em_id")
     private int id;
 
-    @Column(name = "em_name")
     private String name;
 
-    @Column(name = "em_salary")
     private int salary;
 
     public Employee(String name, int salary) {
