@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.PostConstruct;
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("/employee")
@@ -27,16 +25,17 @@ public class EmployeeController {
         this.employeeRepository = employeeRepository;
     }
 
-    @PostConstruct
-    public void init() {
-        employeeRepository.saveAll(Stream.of(
-                new Employee("henry", 20000),
-                new Employee("lol", 500000),
-                new Employee("someone", 3000)
-        ).collect(Collectors.toList()));
-    }
+//    @PostConstruct
+//    public void init() {
+//        employeeRepository.saveAll(Stream.of(
+//                new Employee("henry", 20000),
+//                new Employee("mayan", 50000),
+//                new Employee("someone", 3000)
+//        ).collect(Collectors.toList()));
+//    }
 
     @GetMapping("/all")
+    @RolesAllowed("admin")
     public ResponseEntity<List<Employee>> getAllEmployees() {
         List<Employee> users = employeeRepository.findAll();
 
@@ -45,6 +44,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
+    @RolesAllowed("user")
     public ResponseEntity<Employee> getEmployee(@PathVariable Integer id) {
         Optional<Employee> user = Optional.of(employeeRepository.getById(id));
 
