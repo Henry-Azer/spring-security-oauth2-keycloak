@@ -1,15 +1,16 @@
 # spring-security-oauth2-keycloak
 Sample implementation code of spring security oauth2 keycloak technology.
 
-•	APIs:  
+#	APIs:  
     1- http://localhost:8080/employee/all [GET]  
     2- http://localhost:8080/employee/{id} [GET]  
   
-•	JSON Login Credentials  
+##	JSON Login Credentials  
+    
     {  
         "user" : "admin",  
         "password" : "admin"  
-    },
+    }
     
     {  
         "user" : "user",  
